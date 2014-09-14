@@ -6,5 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_image_picker">Pick a remote Image</string>
     <string name="servers">Servers</string>
+    <string name="drawer_open">Open Sidebar</string>
+    <string name="drawer_close">Close Sidebar</string>
 
 </resources>
