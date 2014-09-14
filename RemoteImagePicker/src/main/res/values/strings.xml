@@ -8,5 +8,6 @@
     <string name="servers">Servers</string>
     <string name="drawer_open">Open Sidebar</string>
     <string name="drawer_close">Close Sidebar</string>
+    <string name="sliding_menu_title">Pick Server and Pod</string>
 
 </resources>

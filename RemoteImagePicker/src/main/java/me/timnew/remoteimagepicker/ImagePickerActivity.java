@@ -27,29 +27,12 @@ public class ImagePickerActivity extends FragmentActivity {
     protected void afterViews() {
         actionBar = getActionBar();
 
-        drawerToggle = new ActionBarDrawerToggle(this,
-                drawerLayout, R.drawable.ic_navigation_drawer,
-                R.string.drawer_open, R.string.drawer_close) {
-
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                actionBar.setTitle(ImagePickerActivity.this.getTitle());
-                invalidateOptionsMenu();
-            }
-
-            /** Called when a drawer has settled in a completely open state. */
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                actionBar.setTitle("Sidebar");
-                invalidateOptionsMenu();
-            }
-        };
-
-        drawerLayout.setDrawerListener(drawerToggle);
-
+        //noinspection ConstantConditions
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
+        drawerToggle = new SlidingMenuToggle();
+        drawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
     }
 
@@ -65,6 +48,27 @@ public class ImagePickerActivity extends FragmentActivity {
             drawerLayout.closeDrawer(LEFT);
         } else {
             drawerLayout.openDrawer(LEFT);
+        }
+    }
+
+    private class SlidingMenuToggle extends ActionBarDrawerToggle {
+        public SlidingMenuToggle() {
+            super(ImagePickerActivity.this,
+                    drawerLayout,
+                    R.drawable.ic_navigation_drawer,
+                    R.string.drawer_open, R.string.drawer_close);
+        }
+
+        public void onDrawerClosed(View view) {
+            super.onDrawerClosed(view);
+            actionBar.setTitle(ImagePickerActivity.this.getTitle());
+            invalidateOptionsMenu();
+        }
+
+        public void onDrawerOpened(View drawerView) {
+            super.onDrawerOpened(drawerView);
+            actionBar.setTitle(R.string.sliding_menu_title);
+            invalidateOptionsMenu();
         }
     }
 }
