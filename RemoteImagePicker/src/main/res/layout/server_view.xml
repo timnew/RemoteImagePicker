@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="10dp">
+
+    <ImageView android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_list_server"
+               android:adjustViewBounds="false"
+               android:layout_gravity="center_horizontal" android:id="@+id/imageView"
+               android:layout_centerVertical="true" android:layout_alignParentLeft="true"/>
+
+    <TextView android:id="@+id/ip_address"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              tools:text="192.168.1.174:4000"
+              android:layout_gravity="center_horizontal"
+              android:layout_centerVertical="true" android:layout_toRightOf="@+id/imageView" android:textSize="16sp"
+              android:layout_marginLeft="5dp"/>
+
+</RelativeLayout>

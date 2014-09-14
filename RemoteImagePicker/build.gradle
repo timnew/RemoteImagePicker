@@ -21,9 +21,14 @@ def AAVersion = '3.1'
 dependencies {
     apt "org.androidannotations:androidannotations:$AAVersion"
     compile "org.androidannotations:androidannotations-api:$AAVersion"
+    compile 'de.greenrobot:eventbus:2.2.1'
+    compile 'org.easytesting:fest-reflect:1.4.1'
+    compile 'com.google.guava:guava:18.0'
+    compile 'com.github.bumptech.glide:glide:3.3.+'
+    compile 'com.koushikdutta.ion:ion:1.+'
+    compile 'com.google.code.gson:gson:2.3'
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
-
     compile 'com.android.support:appcompat-v7:19.+'
 }
 
