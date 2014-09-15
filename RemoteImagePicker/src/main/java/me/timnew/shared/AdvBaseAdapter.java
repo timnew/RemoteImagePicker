@@ -24,6 +24,7 @@ public abstract class AdvBaseAdapter<T, TView extends View> extends BaseAdapter 
 
     protected void setItems(List<T> items) {
         this.items = items;
+        notifyDataSetChanged();
     }
 
     @Override

@@ -10,8 +10,10 @@
                android:layout_height="wrap_content"
                android:src="@drawable/ic_list_server"
                android:adjustViewBounds="false"
-               android:layout_gravity="center_horizontal" android:id="@+id/imageView"
-               android:layout_centerVertical="true" android:layout_alignParentLeft="true"/>
+               android:layout_gravity="center_horizontal"
+               android:id="@+id/image_view"
+               android:layout_centerVertical="true"
+               android:layout_alignParentLeft="true"/>
 
     <TextView android:id="@+id/ip_address"
               android:layout_width="wrap_content"
@@ -19,7 +21,7 @@
               tools:text="192.168.1.174:4000"
               android:layout_gravity="center_horizontal"
               android:layout_centerVertical="true"
-              android:layout_toRightOf="@+id/imageView" android:textSize="16sp"
+              android:layout_toRightOf="@+id/image_view" android:textSize="16sp"
               android:layout_marginLeft="5dp"
               android:textColor="#fff"/>
 

@@ -23,4 +23,12 @@ public class ServerInfo {
     public String toString() {
         return format("%s:%d", address.getHostAddress(), port);
     }
+
+    public String buildUrl(String path) {
+        return format("http://%s:%d%s", address.getHostAddress(), port, path);
+    }
+
+    public String buildUrl(String template, Object... args) {
+        return buildUrl(format(template, args));
+    }
 }

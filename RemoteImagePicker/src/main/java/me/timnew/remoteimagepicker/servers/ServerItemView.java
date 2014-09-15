@@ -7,9 +7,9 @@ import me.timnew.remoteimagepicker.R;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
-@EViewGroup(R.layout.server_view)
-public class ServerView extends RelativeLayout {
-    public ServerView(Context context) {
+@EViewGroup(R.layout.server_item_view)
+public class ServerItemView extends RelativeLayout {
+    public ServerItemView(Context context) {
         super(context);
     }
 

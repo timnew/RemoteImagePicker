@@ -3,13 +3,12 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent">
 
-    <FrameLayout
-            android:id="@+id/content_frame"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-    </FrameLayout>
-
+    <fragment android:id="@+id/image_list"
+              android:name="me.timnew.remoteimagepicker.ImageGridFragment_"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:tag="image_list"
+              tools:layout="@layout/fragment_image_grid"/>
 
     <fragment android:id="@+id/sliding_menu"
               android:name="me.timnew.remoteimagepicker.SlidingMenuFragment_"

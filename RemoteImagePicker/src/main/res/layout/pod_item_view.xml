@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:padding="10dp">
+
+    <ImageView android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_list_album"
+               android:adjustViewBounds="false"
+               android:layout_gravity="center_horizontal"
+               android:id="@+id/image_view"
+               android:layout_centerVertical="true"
+               android:layout_alignParentLeft="true"/>
+
+    <TextView android:id="@+id/pod_name"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              tools:text="Awesome Photos"
+              android:layout_gravity="center_horizontal"
+              android:layout_centerVertical="true"
+              android:layout_toRightOf="@+id/image_view"
+              android:textSize="16sp"
+              android:layout_marginLeft="5dp"/>
+</merge>

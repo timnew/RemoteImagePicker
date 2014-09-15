@@ -13,7 +13,6 @@ import java.net.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.google.common.collect.Lists.newArrayList;
 import static java.lang.String.format;
 import static me.timnew.remoteimagepicker.servers.DiscoveryService.DiscoveryStatusChangedEvent.DiscoveryChangeTypes;
 import static me.timnew.remoteimagepicker.servers.DiscoveryService.DiscoveryStatusChangedEvent.DiscoveryChangeTypes.SERVER_ONLINE;
@@ -44,6 +43,12 @@ public class DiscoveryService {
     @AfterInject
     protected void afterInject() {
         bus.register(this);
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        bus.unregister(this);
     }
 
     public void start() {

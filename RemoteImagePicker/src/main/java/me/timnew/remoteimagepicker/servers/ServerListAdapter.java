@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import static me.timnew.remoteimagepicker.servers.DiscoveryService.DiscoveryStatusChangedEvent;
 
 @EBean
-public class ServerListAdapter extends AdvBaseAdapter<ServerInfo, ServerView> {
+public class ServerListAdapter extends AdvBaseAdapter<ServerInfo, ServerItemView> {
 
     @RootContext
     protected Context context;
@@ -33,12 +33,18 @@ public class ServerListAdapter extends AdvBaseAdapter<ServerInfo, ServerView> {
     }
 
     @Override
-    protected ServerView createView(ViewGroup parent) {
-        return ServerView_.build(context);
+    protected void finalize() throws Throwable {
+        super.finalize();
+        bus.unregister(this);
     }
 
     @Override
-    protected ServerView updateView(ServerView itemView, ServerInfo item) {
+    protected ServerItemView createView(ViewGroup parent) {
+        return ServerItemView_.build(context);
+    }
+
+    @Override
+    protected ServerItemView updateView(ServerItemView itemView, ServerInfo item) {
         itemView.update(item);
         return itemView;
     }

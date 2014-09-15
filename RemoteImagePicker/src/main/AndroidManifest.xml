@@ -3,6 +3,7 @@
           package="me.timnew.remoteimagepicker">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
             android:name=".RemoteImagePickerApplication_"
@@ -10,7 +11,6 @@
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
-
         <activity
                 android:name=".ImagePickerActivity_"
                 android:label="@string/title_activity_image_picker">

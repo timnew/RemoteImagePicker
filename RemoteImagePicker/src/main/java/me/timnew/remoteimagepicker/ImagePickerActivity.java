@@ -6,12 +6,11 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
-import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.OptionsItem;
-import org.androidannotations.annotations.ViewById;
+import me.timnew.shared.events.Bus;
+import org.androidannotations.annotations.*;
 
 import static android.view.Gravity.LEFT;
+import static me.timnew.remoteimagepicker.ImagePreviewFragment.ImagePreviewEvent;
 
 @EActivity(R.layout.activity_image_picker)
 public class ImagePickerActivity extends FragmentActivity {
@@ -22,6 +21,9 @@ public class ImagePickerActivity extends FragmentActivity {
     private ActionBar actionBar;
 
     protected ActionBarDrawerToggle drawerToggle;
+
+    @Bean
+    protected Bus bus;
 
     @AfterViews
     protected void afterViews() {
@@ -34,6 +36,14 @@ public class ImagePickerActivity extends FragmentActivity {
         drawerToggle = new SlidingMenuToggle();
         drawerLayout.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
+
+        bus.register(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        bus.unregister(this);
     }
 
     @Override
@@ -44,11 +54,49 @@ public class ImagePickerActivity extends FragmentActivity {
 
     @OptionsItem(android.R.id.home)
     public void toggleSlidingMenu() {
-        if (drawerLayout.isDrawerOpen(LEFT)) {
-            drawerLayout.closeDrawer(LEFT);
+        if (isSlidingMenuShown()) {
+            closeSlidingMenu();
         } else {
-            drawerLayout.openDrawer(LEFT);
+            openSlidingMenu();
         }
+    }
+
+    public boolean isSlidingMenuShown() {
+        return drawerLayout.isDrawerOpen(LEFT);
+    }
+
+    public void openSlidingMenu() {
+        drawerLayout.openDrawer(LEFT);
+    }
+
+    public void closeSlidingMenu() {
+        drawerLayout.closeDrawer(LEFT);
+    }
+
+    public void onEvent(SlidingMenuCommands command) {
+        command.applyTo(this);
+    }
+
+    public static enum SlidingMenuCommands {
+        OPEN_SLIDING_MENU {
+            @Override
+            void applyTo(ImagePickerActivity activity) {
+                activity.openSlidingMenu();
+            }
+        },
+        CLOSE_SLIDING_MENU {
+            @Override
+            void applyTo(ImagePickerActivity activity) {
+                activity.closeSlidingMenu();
+            }
+        };
+
+        abstract void applyTo(ImagePickerActivity activity);
+    }
+
+    public void onEvent(ImagePreviewEvent event) {
+
+
     }
 
     private class SlidingMenuToggle extends ActionBarDrawerToggle {
