@@ -1,6 +1,8 @@
 package me.timnew.remoteimagepicker.images;
 
-public class PodInfo {
+import java.io.Serializable;
+
+public class PodInfo implements Serializable {
     public final int id;
     public final String name;
 

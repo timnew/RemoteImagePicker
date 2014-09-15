@@ -2,6 +2,7 @@ package me.timnew.remoteimagepicker;
 
 import android.support.v4.app.Fragment;
 import android.widget.ListView;
+import me.timnew.remoteimagepicker.events.CurrentPodInfo;
 import me.timnew.remoteimagepicker.images.PodInfo;
 import me.timnew.remoteimagepicker.images.PodListAdapter;
 import me.timnew.remoteimagepicker.images.RestClient;
@@ -39,11 +40,4 @@ public class SlidingMenuFragment extends Fragment {
         bus.post(CLOSE_SLIDING_MENU);
     }
 
-    public static class CurrentPodInfo {
-        public final PodInfo pod;
-
-        public CurrentPodInfo(PodInfo pod) {
-            this.pod = pod;
-        }
-    }
 }

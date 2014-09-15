@@ -2,15 +2,14 @@ package me.timnew.remoteimagepicker.images;
 
 import android.content.Context;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageView;
+import me.timnew.remoteimagepicker.ImagePreviewActivity_;
+import me.timnew.remoteimagepicker.R;
+import me.timnew.remoteimagepicker.events.ImageListUpdatedEvent;
 import me.timnew.shared.AdvBaseAdapter;
 import me.timnew.shared.events.Bus;
-import org.androidannotations.annotations.AfterInject;
-import org.androidannotations.annotations.Bean;
-import org.androidannotations.annotations.EBean;
-import org.androidannotations.annotations.RootContext;
-
-import java.util.List;
+import org.androidannotations.annotations.*;
 
 @EBean
 public class ImageGridAdapter extends AdvBaseAdapter<ImageInfo, ImageItemView> {
@@ -24,15 +23,29 @@ public class ImageGridAdapter extends AdvBaseAdapter<ImageInfo, ImageItemView> {
     @Bean
     protected RestClient client;
 
-    @AfterInject
-    protected void afterInject() {
+    @ViewById(R.id.image_grid)
+    protected GridView imageGird;
+
+    @AfterViews
+    protected void afterViews() {
+
         bus.register(this);
+        imageGird.setAdapter(this);
     }
 
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
         bus.unregister(this);
+    }
+
+    @ItemClick(R.id.image_grid)
+    protected void imageSelected(ImageInfo image) {
+        ImagePreviewActivity_.intent(context)
+                .serverInfo(client.getCurrentServer())
+                .podInfo(client.getCurrentPod())
+                .imageInfo(image)
+                .start();
     }
 
     @Override
@@ -53,11 +66,4 @@ public class ImageGridAdapter extends AdvBaseAdapter<ImageInfo, ImageItemView> {
         this.setItems(event.imageInfos);
     }
 
-    public static class ImageListUpdatedEvent {
-        public final List<ImageInfo> imageInfos;
-
-        public ImageListUpdatedEvent(List<ImageInfo> imageInfos) {
-            this.imageInfos = imageInfos;
-        }
-    }
 }

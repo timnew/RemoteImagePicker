@@ -10,7 +10,6 @@ import me.timnew.shared.events.Bus;
 import org.androidannotations.annotations.*;
 
 import static android.view.Gravity.LEFT;
-import static me.timnew.remoteimagepicker.ImagePreviewFragment.ImagePreviewEvent;
 
 @EActivity(R.layout.activity_image_picker)
 public class ImagePickerActivity extends FragmentActivity {
@@ -92,11 +91,6 @@ public class ImagePickerActivity extends FragmentActivity {
         };
 
         abstract void applyTo(ImagePickerActivity activity);
-    }
-
-    public void onEvent(ImagePreviewEvent event) {
-
-
     }
 
     private class SlidingMenuToggle extends ActionBarDrawerToggle {

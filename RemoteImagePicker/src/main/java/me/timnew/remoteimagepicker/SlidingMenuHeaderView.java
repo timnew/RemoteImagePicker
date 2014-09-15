@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import me.timnew.remoteimagepicker.events.CurrentServerInfo;
 import me.timnew.remoteimagepicker.servers.ServerInfo;
 import me.timnew.remoteimagepicker.servers.ServerListAdapter;
 import me.timnew.shared.events.Bus;
@@ -60,11 +61,4 @@ public class SlidingMenuHeaderView extends LinearLayout {
         bus.post(new CurrentServerInfo(server));
     }
 
-    public static class CurrentServerInfo {
-        public final ServerInfo currentServer;
-
-        public CurrentServerInfo(ServerInfo currentServer) {
-            this.currentServer = currentServer;
-        }
-    }
 }

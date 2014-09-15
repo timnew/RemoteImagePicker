@@ -1,6 +1,8 @@
 package me.timnew.remoteimagepicker.images;
 
-public class ImageInfo {
+import java.io.Serializable;
+
+public class ImageInfo implements Serializable {
     public final String name;
     public final int size;
 

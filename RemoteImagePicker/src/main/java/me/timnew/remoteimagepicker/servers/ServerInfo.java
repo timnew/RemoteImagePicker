@@ -1,10 +1,11 @@
 package me.timnew.remoteimagepicker.servers;
 
+import java.io.Serializable;
 import java.net.InetAddress;
 
 import static java.lang.String.format;
 
-public class ServerInfo {
+public class ServerInfo implements Serializable {
     public static final int DEFAULT_PORT = 4000;
 
     public final InetAddress address;

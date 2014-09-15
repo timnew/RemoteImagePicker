@@ -2,11 +2,10 @@ package me.timnew.remoteimagepicker.images;
 
 import android.content.Context;
 import android.view.ViewGroup;
+import me.timnew.remoteimagepicker.events.PodsListUpdatedEvent;
 import me.timnew.shared.AdvBaseAdapter;
 import me.timnew.shared.events.Bus;
 import org.androidannotations.annotations.*;
-
-import java.util.List;
 
 @EBean
 public class PodListAdapter extends AdvBaseAdapter<PodInfo, PodItemView> {
@@ -44,11 +43,4 @@ public class PodListAdapter extends AdvBaseAdapter<PodInfo, PodItemView> {
         setItems(event.pods);
     }
 
-    public static class PodsListUpdatedEvent {
-        public final List<PodInfo> pods;
-
-        public PodsListUpdatedEvent(List<PodInfo> pods) {
-            this.pods = pods;
-        }
-    }
 }

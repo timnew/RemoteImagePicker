@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.DhcpInfo;
 import android.net.wifi.WifiManager;
 import android.util.Log;
+import me.timnew.remoteimagepicker.events.DiscoveryStatusChangedEvent;
 import me.timnew.shared.events.Bus;
 import org.androidannotations.annotations.*;
 import org.androidannotations.api.BackgroundExecutor;
@@ -14,8 +15,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static java.lang.String.format;
-import static me.timnew.remoteimagepicker.servers.DiscoveryService.DiscoveryStatusChangedEvent.DiscoveryChangeTypes;
-import static me.timnew.remoteimagepicker.servers.DiscoveryService.DiscoveryStatusChangedEvent.DiscoveryChangeTypes.SERVER_ONLINE;
+import static me.timnew.remoteimagepicker.events.DiscoveryStatusChangedEvent.DiscoveryChangeTypes;
+import static me.timnew.remoteimagepicker.events.DiscoveryStatusChangedEvent.DiscoveryChangeTypes.SERVER_ONLINE;
 
 @EBean
 public class DiscoveryService {
@@ -156,21 +157,6 @@ public class DiscoveryService {
         DiscoveryStatusChangedEvent event = new DiscoveryStatusChangedEvent(address, type);
 
         bus.post(event);
-    }
-
-    public static class DiscoveryStatusChangedEvent {
-        public final ServerInfo server;
-        public final DiscoveryChangeTypes type;
-
-        public DiscoveryStatusChangedEvent(InetAddress address, DiscoveryChangeTypes type) {
-            this.server = new ServerInfo(address);
-            this.type = type;
-        }
-
-        public static enum DiscoveryChangeTypes {
-            SERVER_ONLINE,
-            SERVER_OFFLINE
-        }
     }
 
     public void onEvent(DiscoveryServiceCommands command) {
