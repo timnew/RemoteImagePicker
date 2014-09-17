@@ -3,7 +3,7 @@
                                         android:id="@+id/drawer_layout"
                                         style="@style/ActivityRootLayout">
 
-    <fragment android:id="@+id/image_list"
+    <fragment android:id="@+id/main_fragment"
               android:name="me.timnew.remoteimagepicker.ImageGridFragment_"
               android:layout_width="match_parent"
               android:layout_height="match_parent"

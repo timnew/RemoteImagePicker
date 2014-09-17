@@ -34,6 +34,12 @@ public class SlidingMenuFragment extends Fragment {
         podList.setAdapter(podListAdapter);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        discoveryService.stop();
+    }
+
     @ItemClick(R.id.pod_list)
     protected void podSelected(PodInfo pod) {
         bus.post(new CurrentPodInfo(pod));

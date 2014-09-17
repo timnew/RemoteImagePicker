@@ -4,9 +4,9 @@ import android.content.Context;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
-import me.timnew.remoteimagepicker.ImagePreviewActivity_;
 import me.timnew.remoteimagepicker.R;
 import me.timnew.remoteimagepicker.events.ImageListUpdatedEvent;
+import me.timnew.remoteimagepicker.events.PreviewImageEvent;
 import me.timnew.shared.AdvBaseAdapter;
 import me.timnew.shared.events.Bus;
 import org.androidannotations.annotations.*;
@@ -41,11 +41,7 @@ public class ImageGridAdapter extends AdvBaseAdapter<ImageInfo, ImageItemView> {
 
     @ItemClick(R.id.image_grid)
     protected void imageSelected(ImageInfo image) {
-        ImagePreviewActivity_.intent(context)
-                .serverInfo(client.getCurrentServer())
-                .podInfo(client.getCurrentPod())
-                .imageInfo(image)
-                .start();
+        bus.post(new PreviewImageEvent(image));
     }
 
     @Override

@@ -49,6 +49,7 @@ public class DiscoveryService {
     @Override
     protected void finalize() throws Throwable {
         super.finalize();
+        stop();
         bus.unregister(this);
     }
 
@@ -71,7 +72,7 @@ public class DiscoveryService {
     }
 
     private DatagramSocket createSocket() throws SocketException {
-        DatagramSocket socket = new DatagramSocket(DISCOVERY_PORT);
+        DatagramSocket socket = new DatagramSocket();
 
         socket.setBroadcast(true);
         socket.setSoTimeout(TIMEOUT_MS);

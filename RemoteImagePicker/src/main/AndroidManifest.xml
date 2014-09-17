@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
             android:name=".RemoteImagePickerApplication_"
@@ -14,11 +16,13 @@
         <activity
                 android:name=".ImagePickerActivity_"
                 android:label="@string/title_activity_image_picker">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
             <intent-filter>
                 <action android:name="android.media.action.IMAGE_CAPTURE"/>
 
@@ -38,13 +42,6 @@
             <!-- <data android:mimeType="image/*" /> -->
             <!-- </intent-filter> -->
 
-            <intent-filter>
-                <action android:name="android.intent.action.PICK"/>
-
-                <category android:name="android.intent.category.DEFAULT"/>
-
-                <data android:mimeType="image/*"/>
-            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT"/>
 
