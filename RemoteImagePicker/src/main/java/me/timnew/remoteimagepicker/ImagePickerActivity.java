@@ -22,7 +22,6 @@ import com.koushikdutta.ion.future.ImageViewFuture;
 import me.timnew.remoteimagepicker.events.ImagePickedEvent;
 import me.timnew.remoteimagepicker.events.PreviewImageEvent;
 import me.timnew.remoteimagepicker.images.RestClient;
-import me.timnew.remoteimagepicker.images.RestClient_;
 import me.timnew.shared.events.Bus;
 import org.androidannotations.annotations.*;
 

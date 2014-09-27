@@ -27,6 +27,7 @@ import me.timnew.remoteimagepicker.events.CurrentServerInfo;
 import me.timnew.remoteimagepicker.events.ImageListUpdatedEvent;
 
 import me.timnew.remoteimagepicker.events.PodsListUpdatedEvent;
+import org.w3c.dom.Document;
 
 import static org.androidannotations.annotations.EBean.Scope.Singleton;
 
@@ -124,7 +125,6 @@ public class RestClient {
                 .withBitmap()
                 .placeholder(R.drawable.ic_image)
                 .error(R.drawable.ic_broken)
-                .deepZoom()
                 .intoImageView(imageView);
     }
 
