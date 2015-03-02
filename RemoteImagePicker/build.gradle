@@ -24,8 +24,8 @@ dependencies {
     compile 'de.greenrobot:eventbus:2.2.1'
     compile 'org.easytesting:fest-reflect:1.4.1'
     compile 'com.google.guava:guava:18.0'
-    compile 'com.github.bumptech.glide:glide:3.3.+'
-    compile 'com.koushikdutta.ion:ion:1.+'
+    compile 'com.github.bumptech.glide:glide:3.3.1'
+    compile 'com.koushikdutta.ion:ion:1.4.1'
     compile 'com.google.code.gson:gson:2.3'
 
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -34,14 +34,14 @@ dependencies {
 
 apt {
     arguments {
-        androidManifestFile variant.processResources.manifestFile
+        androidManifestFile variant.outputs[0].processResources.manifestFile
         resourcePackageName 'me.timnew.remoteimagepicker'
     }
 }
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.0"
+    buildToolsVersion '19.1.0'
 
     defaultConfig {
         minSdkVersion 15
@@ -52,20 +52,8 @@ android {
 
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
-    // This is only needed if you project structure doesn't fit the one found here
-    // http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Project-Structure
-//    sourceSets {
-//        main {
-//            // manifest.srcFile 'src/main/AndroidManifest.xml'
-//            // java.srcDirs = ['src/main/java', 'build/generated/source/apt/${variant.dirName}']
-//            // resources.srcDirs = ['src/main/resources']
-//            // res.srcDirs = ['src/main/res']
-//            // assets.srcDirs = ['src/main/assets']
-//        }
-
-//    }
 }

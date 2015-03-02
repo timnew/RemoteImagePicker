@@ -2,7 +2,6 @@ package me.timnew.remoteimagepicker.images;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.util.Log;
 import android.widget.ImageView;
 import com.bumptech.glide.Glide;
@@ -14,20 +13,19 @@ import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.future.ImageViewFuture;
 import com.koushikdutta.ion.future.ResponseFuture;
 import me.timnew.remoteimagepicker.R;
+import me.timnew.remoteimagepicker.events.CurrentPodInfo;
+import me.timnew.remoteimagepicker.events.CurrentServerInfo;
+import me.timnew.remoteimagepicker.events.ImageListUpdatedEvent;
+import me.timnew.remoteimagepicker.events.PodsListUpdatedEvent;
 import me.timnew.remoteimagepicker.servers.ServerInfo;
 import me.timnew.shared.events.Bus;
-import org.androidannotations.annotations.*;
+import org.androidannotations.annotations.AfterInject;
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.RootContext;
 
 import java.io.File;
 import java.util.List;
-
-import me.timnew.remoteimagepicker.events.CurrentPodInfo;
-import me.timnew.remoteimagepicker.events.CurrentServerInfo;
-
-import me.timnew.remoteimagepicker.events.ImageListUpdatedEvent;
-
-import me.timnew.remoteimagepicker.events.PodsListUpdatedEvent;
-import org.w3c.dom.Document;
 
 import static org.androidannotations.annotations.EBean.Scope.Singleton;
 

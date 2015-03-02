@@ -3,13 +3,12 @@ package me.timnew.remoteimagepicker.servers;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import me.timnew.remoteimagepicker.events.DiscoveryStatusChangedEvent;
 import me.timnew.shared.AdvBaseAdapter;
 import me.timnew.shared.events.Bus;
 import org.androidannotations.annotations.*;
 
 import java.util.ArrayList;
-
-import me.timnew.remoteimagepicker.events.DiscoveryStatusChangedEvent;
 
 @EBean
 public class ServerListAdapter extends AdvBaseAdapter<ServerInfo, ServerItemView> {

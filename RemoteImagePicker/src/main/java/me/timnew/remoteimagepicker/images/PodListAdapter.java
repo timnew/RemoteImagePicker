@@ -5,7 +5,10 @@ import android.view.ViewGroup;
 import me.timnew.remoteimagepicker.events.PodsListUpdatedEvent;
 import me.timnew.shared.AdvBaseAdapter;
 import me.timnew.shared.events.Bus;
-import org.androidannotations.annotations.*;
+import org.androidannotations.annotations.AfterInject;
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EBean;
+import org.androidannotations.annotations.RootContext;
 
 @EBean
 public class PodListAdapter extends AdvBaseAdapter<PodInfo, PodItemView> {
@@ -42,5 +45,4 @@ public class PodListAdapter extends AdvBaseAdapter<PodInfo, PodItemView> {
     public void onEventMainThread(PodsListUpdatedEvent event) {
         setItems(event.pods);
     }
-
 }

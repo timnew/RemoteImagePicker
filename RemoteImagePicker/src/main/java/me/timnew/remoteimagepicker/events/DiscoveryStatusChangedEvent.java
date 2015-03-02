@@ -1,6 +1,5 @@
 package me.timnew.remoteimagepicker.events;
 
-import me.timnew.remoteimagepicker.servers.DiscoveryService;
 import me.timnew.remoteimagepicker.servers.ServerInfo;
 
 import java.net.InetAddress;
